@@ -235,7 +235,7 @@ com.reto.tecnico/
 
 ## Uso de Inteligencia Artificial
 
-Este proyecto fue desarrollado con asistencia de IA (Claude). Las herramientas de IA aceleraron:
+Este proyecto fue desarrollado con asistencia Claude Code. Las herramientas de IA aceleraron:
 - Generación del scaffolding inicial (estructura de carpetas, pom.xml)
 - Boilerplate de entidades JPA, DTOs y controladores
 - Configuración de Spring Security con JWT

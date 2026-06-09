@@ -1,0 +1,24 @@
+# Environment
+.env
+
+# Claude
+CLAUDE.md
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+.mvn/
+
+# Node / Quasar
+node_modules/
+dist/
+.quasar/
+.cache/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store

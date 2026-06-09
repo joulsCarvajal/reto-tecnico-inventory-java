@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: reto_postgres
+    environment:
+      POSTGRES_DB: retotecnico
+      POSTGRES_USER: reto_user
+      POSTGRES_PASSWORD: reto_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reto_user -d retotecnico"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: reto_backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/retotecnico
+      SPRING_DATASOURCE_USERNAME: reto_user
+      SPRING_DATASOURCE_PASSWORD: reto_pass
+      JWT_SECRET: reto-tecnico-super-secret-jwt-key-2024-change-in-production
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY:-SG.placeholder}
+      SENDGRID_FROM_EMAIL: ${SENDGRID_FROM_EMAIL:-noreply@retotecnico.com}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: reto_frontend
+    ports:
+      - "9000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

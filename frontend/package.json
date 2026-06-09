@@ -1,0 +1,29 @@
+{
+  "name": "reto-tecnico-frontend",
+  "version": "1.0.0",
+  "description": "Reto Técnico - Frontend Quasar/Vue.js",
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "lint": "eslint --ext .js,.vue ./src"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.9",
+    "axios": "^1.6.7",
+    "pinia": "^2.1.7",
+    "quasar": "^2.14.5",
+    "vue": "^3.4.18",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@quasar/app-webpack": "^3.12.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.21.1",
+    "sass": "^1.100.0",
+    "sass-loader": "^16.0.8"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
+  }
+}
